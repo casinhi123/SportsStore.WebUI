@@ -98,6 +98,7 @@
     <Compile Include="Abtract\EFProductRepository.cs" />
     <Compile Include="Abtract\IProductRepository.cs" />
     <Compile Include="ConnectDB\EFDbContext.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
