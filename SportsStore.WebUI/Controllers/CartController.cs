@@ -12,17 +12,36 @@ namespace SportsStore.WebUI.Controllers
 {
     public class CartController : Controller
     {
-        IProductRepository repository;
-        public CartController(IProductRepository repositoryParam)
+        private IProductRepository repository;
+        private IProcessOrder processOrder;
+        public CartController(IProductRepository repositoryParam,IProcessOrder processOrder)
         {
             this.repository = repositoryParam;
+            this.processOrder = processOrder;
         }
 
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Xin lỗi, giỏ hàng của bạn đang trống!");
+            }
+            if (ModelState.IsValid)
+            {
+                processOrder.ProcessOrder(cart,shippingDetails);
+                cart.Clear();
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
+        }
         public ActionResult Index(Cart cart,string returnUrl)
         {
             return View(new CartIndexViewModel {  ReturnUrl = returnUrl,Cart=cart });
         }
-
         public RedirectToRouteResult AddToCart(Cart cart,int productID, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductID == productID);
@@ -32,7 +51,6 @@ namespace SportsStore.WebUI.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
-
         public RedirectToRouteResult RemoveFromCart(Cart cart,int productID, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductID == productID);
@@ -50,7 +68,6 @@ namespace SportsStore.WebUI.Controllers
         {
             return PartialView(cart);
         }
-
         private Cart GetCar()
         {
             Cart cart = (Cart)Session["Cart"];
@@ -61,7 +78,5 @@ namespace SportsStore.WebUI.Controllers
             }
             return cart;
         }
-
-       
     }
 }

@@ -44,6 +44,7 @@ namespace SportsStore.Domain.Entities
         {
             get { return lineCollection; }
         }
+
     }
     public class CartLine
     {

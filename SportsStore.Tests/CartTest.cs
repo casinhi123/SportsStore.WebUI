@@ -113,7 +113,7 @@ namespace SportsStore.Tests
             //Arrange- Create the Cart
             Cart cart = new Cart();
             //Arrange- Create a controller
-            CartController target = new CartController(mock.Object);
+            CartController target = new CartController(mock.Object,null);
             //Action-Add a product to a Cart
             target.AddToCart(cart, 1, null);
 
@@ -132,7 +132,7 @@ namespace SportsStore.Tests
             }.AsQueryable());
             //
             //Arrange - Create controller
-            CartController target = new CartController(mock.Object);
+            CartController target = new CartController(mock.Object,null);
             //Arrage - Create new Cart
             Cart cart = new Cart();
             //Action

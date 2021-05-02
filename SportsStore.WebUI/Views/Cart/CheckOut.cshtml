@@ -6,6 +6,11 @@
 
 <h2>Thanh toán ngay</h2>
 <p>Vui lòng điền vào thông tin của bạn, chúng tôi sẽ gửi hàng ngay và luôn!</p>
+
+@using (Html.BeginForm())
+{
+
+@Html.ValidationSummary();
 <h3>Gửi đến</h3>
 <div class="form-group">
 	<label>Họ và tên:</label>
@@ -14,63 +19,64 @@
 
 <h3>Địa chỉ</h3>
 
-@foreach (var property in ViewData.ModelMetadata.Properties)
+foreach (var property in ViewData.ModelMetadata.Properties)
 {
-	if (property.PropertyName != "Name"&&property.PropertyName != "GiftWrap")
+
+	if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
 	{
 		<div class="form-group">
-			<label>@(property.DisplayName??property.PropertyName)</label>
-			@Html.TextBox(property.PropertyName,null,new {@class="form-control"})
+			<label>@(property.DisplayName ?? property.PropertyName)</label>
+			@Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
 		</div>
 	}
 }
 
 @*<div class="form-group">
-	<label>Địa chỉ 1:</label>
-	@Html.TextBoxFor(x => x.Line1, new
-	{
-		@class = "form-control"
-	})
-</div>
-<div class="form-group">
-	<label>Địa chỉ 2:</label>
-	@Html.TextBoxFor(x => x.Line2, new { @class = "form-control" })
-</div>
-<div class="form-group">
-	<label>Địa chỉ 3:</label>
-	@Html.TextBoxFor(x => x.Line3, new
-	{
-		@class = "form-control"
-	})
-</div>
-<div class="form-group">
-	<label>Thành phố:</label>
-	@Html.TextBoxFor(x => x.City, new
-	{
-		@class = "form-control"
-	})
-</div>
-<div class="form-group">
-	<label>Quận/Huyện:</label>
-	@Html.TextBoxFor(x => x.State, new
-	{
-		@class = "form-control"
-	})
-</div>
-<div class="form-group">
-	<label>Zip:</label>
-	@Html.TextBoxFor(x => x.Zip, new
-	{
-		@class = "form-control"
-	})
-</div>
-<div class="form-group">
-	<label>Country:</label>
-	@Html.TextBoxFor(x => x.Country, new
-	{
-		@class = "form-control"
-	})
-</div>*@
+		<label>Địa chỉ 1:</label>
+		@Html.TextBoxFor(x => x.Line1, new
+		{
+			@class = "form-control"
+		})
+	</div>
+	<div class="form-group">
+		<label>Địa chỉ 2:</label>
+		@Html.TextBoxFor(x => x.Line2, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Địa chỉ 3:</label>
+		@Html.TextBoxFor(x => x.Line3, new
+		{
+			@class = "form-control"
+		})
+	</div>
+	<div class="form-group">
+		<label>Thành phố:</label>
+		@Html.TextBoxFor(x => x.City, new
+		{
+			@class = "form-control"
+		})
+	</div>
+	<div class="form-group">
+		<label>Quận/Huyện:</label>
+		@Html.TextBoxFor(x => x.State, new
+		{
+			@class = "form-control"
+		})
+	</div>
+	<div class="form-group">
+		<label>Zip:</label>
+		@Html.TextBoxFor(x => x.Zip, new
+		{
+			@class = "form-control"
+		})
+	</div>
+	<div class="form-group">
+		<label>Country:</label>
+		@Html.TextBoxFor(x => x.Country, new
+		{
+			@class = "form-control"
+		})
+	</div>*@
 <h3>Options</h3>
 <div class="checkbox">
 	<label>
@@ -81,7 +87,7 @@
 <div class="text-center">
 	<input class="btn btn-primary" type="submit"
 		   value="Hoàn thành" />
-</div>
+</div>}
 
 
 

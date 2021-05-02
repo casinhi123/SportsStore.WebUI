@@ -96,7 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abtract\EFProductRepository.cs" />
+    <Compile Include="Abtract\IProcessOrder.cs" />
     <Compile Include="Abtract\IProductRepository.cs" />
+    <Compile Include="Concrete\EmailSettings.cs" />
     <Compile Include="ConnectDB\EFDbContext.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
